@@ -3,7 +3,6 @@ package ua.edu.ucu.queue;
 import ua.edu.ucu.queue.immutable.ImmutableLinkedList;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,10 +30,10 @@ public class Queue implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        List<String> Iter = new ArrayList<>();
+        List<String> iter = new ArrayList<>();
         while (this.queue.size() != 0) {
-            Iter.add((String) this.dequeue());
+            iter.add((String) this.dequeue());
         }
-        return Iter.iterator();
+        return iter.iterator();
     }
 }

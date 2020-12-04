@@ -3,15 +3,14 @@ package ua.edu.ucu.tries;
 
 import ua.edu.ucu.queue.Queue;
 
-import java.util.Arrays;
 
 public class RWayTrie implements Trie {
     private static final int R = 26;
     private static final int MIN_WORD = 2;
+    private Node root = new Node();;
     private int size;
-    public Node root;
 
-    private class Node {
+    private static class Node {
         private char value = '\0';
         private int flag = -1;
         private Node[] next = new Node[R];
@@ -36,26 +35,7 @@ public class RWayTrie implements Trie {
         }
     }
 
-    public String get() {
-        Node cur = root;
-        String st = "";
-        while (cur.flag == -1) {
-            for (Node node : cur.next) {
-                if (node != null) {
-                    if (node.value != '\0') {
-                        st += node.value;
-                        cur = node;
-                        break;
-                    }
-                }
-            }
-        }
-        return st;
-    }
-
-    public RWayTrie() {
-        root = new Node();
-    }
+    public RWayTrie() { }
 
     @Override
     public void add(Tuple t) {
@@ -111,9 +91,11 @@ public class RWayTrie implements Trie {
             cur = cur.next[num];
         }
         while (cur.parent != null) {
-            /* if letter that goes before current is in some another word
-               it will have more than 1 children (current letter and letter
-               from another word. So we should delete only current letter and stop */
+            /*
+            if letter that goes before current is in some another word
+            it will have more than 1 children (current letter and letter
+            from another word. So we should delete only current letter and stop
+            */
             if (cur.parent.numChildren() > 1) {
                 num = (int) cur.value - (int) 'a';
                 cur = cur.parent;
