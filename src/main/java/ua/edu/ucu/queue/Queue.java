@@ -30,10 +30,25 @@ public class Queue implements Iterable<String> {
 
     @Override
     public Iterator<String> iterator() {
-        List<String> iter = new ArrayList<>();
-        while (this.queue.size() != 0) {
-            iter.add((String) this.dequeue());
-        }
-        return iter.iterator();
+        Iterator<String> it = new Iterator<String>() {
+
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < queue.size() && queue.toArray()[currentIndex] != null;
+            }
+
+            @Override
+            public String next() {
+                return (String) queue.toArray()[currentIndex++];
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
     }
 }

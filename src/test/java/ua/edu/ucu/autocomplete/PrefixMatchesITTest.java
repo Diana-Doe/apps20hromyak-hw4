@@ -1,4 +1,3 @@
-
 package ua.edu.ucu.autocomplete;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -26,6 +25,10 @@ public class PrefixMatchesITTest {
         String pref = "ab";
 
         Iterable<String> result = pm.wordsWithPrefix(pref);
+
+        for (String res : result) {
+            continue;
+        }
 
         String[] expResult = {"abc", "abce", "abcd", "abcde", "abcdef"};
 

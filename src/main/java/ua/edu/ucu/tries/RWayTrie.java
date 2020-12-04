@@ -7,7 +7,7 @@ import ua.edu.ucu.queue.Queue;
 public class RWayTrie implements Trie {
     private static final int R = 26;
     private static final int MIN_WORD = 2;
-    private Node root = new Node();;
+    private Node root = new Node();
     private int size;
 
     private static class Node {
